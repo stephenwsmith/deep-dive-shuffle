@@ -167,6 +167,32 @@ public class ArrayShuffles {
   }
 
 
+  /**
+   * ???Shuffle deck with def source of randomness. Invokes {@link #shuffles(long[], Random)}
+   * added as an object wrapper
+   * @param deck data array
+   */
+
+  public static <T> void shuffle(T[] deck) { // fisher yates shuffle
+    shuffle(deck, new Random());
+  }
+
+  /**
+   * /** Shuffles deck using FY algorithm with spec source of randomness.
+   * 
+   * @param deck data array
+   * @param rng Source of randomness
+   */
+
+  public static <T> void shuffle(T[] deck, Random rng) { // fisher yates shuffle
+    for (int i = deck.length - 1; i > 0; i--) {
+      int source = rng.nextInt(i + 1);
+      T temp = deck[i];
+      deck[i] = deck[source];
+      deck[source] = temp;
+    }
+  }
+
 
 }
 
